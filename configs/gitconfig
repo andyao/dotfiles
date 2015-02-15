@@ -1,0 +1,70 @@
+[core]
+  ignorecase = false
+[user]
+	name = Andy Yao
+	email = andyaoy@gmail.com
+[alias]
+  la = "!git config -l | grep alias | cut -c 7-"
+  st = status
+  cl = clone
+  cm = commit -m
+  cam = commit -a -m
+  co = checkout
+  cob = checkout -b
+  b = branch
+  br = branch -r
+  bsu = "!f() { git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+  diff = diff --word-diff
+  dc = diff --cached
+  r = reset
+  r0 = reset --soft HEAD
+  r1 = reset --soft HEAD^
+  r2 = reset --soft HEAD^^
+  rh = reset --hard
+  rh0 = reset --hard HEAD
+  rh1 = reset --hard HEAD^
+  rh2 = reset --hard HEAD^^
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+  assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+  lasttag = describe --tags --abbrev=0
+  lt = describe --tags --abbrev=0
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  lg = log --topo-order --all --graph --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  puc = "!f() { git push -u ${1:-origin} $(git symbolic-ref HEAD); }; f"
+  pu = "!f() { git push ${1:-origin} $(git symbolic-ref HEAD); }; f"
+  puf = "!f() { git push -f ${1:-origin} $(git symbolic-ref HEAD); }; f"
+  sub-update = "!f() { git submodule init; git submodule sync; git submodule update; }; f"
+  #delete-branchs = "!git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
+[color]
+	diff = true
+	status = true
+	branch = true
+[core]
+	excludesfile = /Users/andy.yao/.gitignore
+	editor = /usr/bin/vim
+	autocrlf = input
+[apply]
+	whitespace = nowarn
+[github]
+	user = andyao
+	token =
+[push]
+	default = simple
+[merge]
+  conflictstyle = diff3
+[http]
+	sslVerify = false
+	postBuffer = 524288000
+[credential]
+	helper = osxkeychain
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

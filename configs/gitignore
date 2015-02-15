@@ -1,0 +1,21 @@
+.DS_Store
+.svn
+*~
+.*.swp
+*.sublime-project
+*.sublime-workspace
+.idea
+out
+temp
+tmp
+target
+proguard-project.txt
+.metadata
+proguard_logs
+External\ Plug-in\ Libraries
+build.xml
+.settings
+*.classpath
+
+// project settings
+*.iml
